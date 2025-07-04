@@ -39,11 +39,32 @@ namespace ConsoleUI
              * 
              * Set the properties values with object initializer syntax
              */
+            var vehicles = new List<Vehicle>();
+            var car = new Car();
+            var motorcycle = new Motorcycle();
+            Vehicle vehicle1 = new Car { HasTrunk = true };
+            Vehicle vehicle2 = new Motorcycle { HasSideCart = true };
 
             /*
              * Add the 4 vehicles to the list
              * Using a foreach loop iterate through the list and display each of the properties
              */
+
+            vehicles.AddRange(new[] { car, motorcycle, vehicle1, vehicle2 });
+
+            foreach (var vehicle in vehicles)
+            {
+                Console.WriteLine($"The year is {vehicle.Year}, the model is {vehicle.Model}, the make is {vehicle.Make}.");
+                if (vehicle is Car c)
+                {
+                    Console.WriteLine($"Has Trunk: {c.HasTrunk}");
+                }
+                else if (vehicle is Motorcycle m)
+                {
+                    Console.WriteLine($"Has SideCart: {m.HasSideCart}");
+                }
+                Console.WriteLine("");
+            }
 
             // Call each of the drive methods for one car and one motorcycle
 
